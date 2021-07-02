@@ -3,7 +3,7 @@
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
-    border: black 1px solid;
+    border: none;
     padding: 30px;
 }
 
