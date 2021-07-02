@@ -4,6 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     border: black 1px solid;
+    padding: 30px;
 }
 
 .notes-grid > .note{
