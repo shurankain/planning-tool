@@ -1,9 +1,12 @@
 import './App.css';
+import NotesGrid from './components/NotesGrid'
+import HeaderBar from './components/HeaderBar'
 
 function App() {
   return (
     <div className="App">
-      Planning tool
+      <HeaderBar/>
+      <NotesGrid/>
     </div>
   );
 }
