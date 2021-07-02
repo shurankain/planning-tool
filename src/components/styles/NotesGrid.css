@@ -1,8 +1,10 @@
 .notes-grid {
-    width: 2702px;
-    height: 90%;
+    width: 90%;
+    height: 100%;
     display: flex;
-    justify-content: flex-start;
     flex-wrap: wrap;
+    overflow-x: scroll;
+    gap: 30px;
+    padding: 30px;
     border: black 1px solid;
 }

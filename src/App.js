@@ -1,12 +1,12 @@
 import './App.css';
 import NotesGrid from './components/NotesGrid'
-import HeaderBar from './components/HeaderBar'
+import SideBar from './components/SideBar'
 
 function App() {
   return (
     <div className="App">
-      <HeaderBar/>
       <NotesGrid/>
+      <SideBar/>
     </div>
   );
 }
