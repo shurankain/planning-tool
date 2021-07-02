@@ -4,10 +4,29 @@
     display: flex;
     flex-direction: column;
     border: black 1px solid;
+    background-color: white;
+    border-radius: 10px;
 }
 
 .task-text {
     height: 80%;
+}
+
+.note-name {
+    height: 100%;
+    width: 80%;
+    border-right: black 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-box {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .note-footer {
@@ -15,5 +34,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-top: black 1px solid;
 }
 

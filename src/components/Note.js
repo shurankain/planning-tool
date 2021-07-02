@@ -10,11 +10,11 @@ const Note = props => {
         - Task text
       </div>
       <div className='note-footer'>
-        <div className='noteName'>
-          Some note name
+        <div className='note-name'>
+          <p>Some note name</p>
         </div>
         <div className='info-box'>
-          76%
+          <p>76%</p>
         </div>
       </div>
 

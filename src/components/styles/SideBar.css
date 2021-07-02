@@ -12,10 +12,10 @@
     font-size: 30px;
     background-color: #9ec862;
     color: #fff;
+    position: fixed;
     margin: 30px 0;
     padding: .5rem 1rem;
-    cursor: pointer;
-
     border: none;
     border-radius: 10px;
+    cursor: pointer;
 }

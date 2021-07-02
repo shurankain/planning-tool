@@ -24,6 +24,18 @@ const NotesGrid = props => {
       <Note/>
       <Note/>
       <Note/>
+      <Note/>
+      <Note/>
+      <Note/>
+      <Note/>
+      <Note/>
+      <Note/>
+      <Note/>
+      <Note/>
+      <Note/>
+      <Note/>
+      <Note/>
+      <Note/>
     </div>
   )
 }
