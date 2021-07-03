@@ -6,6 +6,7 @@
     border: none;
     background-color: white;
     border-radius: 10px;
+    box-shadow: cornflowerblue 6px 6px 10px;
 }
 
 .task-text {
