@@ -1,47 +1,41 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import {connect} from 'react-redux'
 import "./styles/NotesGrid.css"
 import Note from './Note'
 import PropTypes from 'prop-types'
+import {getNotes} from "../actions/noteActions";
+import Spinner from "./layout/Spinner";
 
-const NotesGrid = props => {
+const NotesGrid = ({notes: {notes, loading}, getNotes}) => {
+
+  useEffect(() => {
+    getNotes()
+    // eslint-disable-next-line
+  }, [])
+
+  if (loading || notes === null) {
+    return <Spinner/>
+  }
+
   return (
     <div className="notes-grid">
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
-      <Note/>
+      {!loading && notes.length === 0 ? (<p className='center'>No notes to show</p>) : (
+        notes.map(note => <Note note={note} key={note.id}/>)
+      )}
     </div>
   )
 }
 
 NotesGrid.propTypes = {
-
+  notes: PropTypes.object.isRequired,
+  getNotes: PropTypes.func.isRequired
 }
 
-export default NotesGrid
+const mapStateToProps = state => ({
+  notes: state.note
+})
+
+export default connect(
+  mapStateToProps,
+  {getNotes})
+(NotesGrid)
