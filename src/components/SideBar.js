@@ -1,6 +1,5 @@
 import React from 'react'
 import "./styles/SideBar.css"
-import PropTypes from 'prop-types'
 
 const SideBar = props => {
   return (
@@ -12,8 +11,6 @@ const SideBar = props => {
   )
 }
 
-SideBar.propTypes = {
-
-}
+SideBar.propTypes = {}
 
 export default SideBar
