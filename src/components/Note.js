@@ -1,10 +1,18 @@
 import React from 'react'
 import './styles/Note.css'
+import {deleteNote} from "../actions/noteActions";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
-const Note = ({note: {noteText, creationDate, tasks}}) => {
+const Note = ({note: {id, noteText, creationDate, tasks}, deleteNote}) => {
 
   const calcTasksCompletion = () => {
     return Math.floor(tasks.filter(task => task.completionStatus).length / tasks.length)
+  }
+
+  const onDelete = () => {
+    console.log(id)
+    deleteNote(id)
   }
 
   return (
@@ -13,7 +21,7 @@ const Note = ({note: {noteText, creationDate, tasks}}) => {
         {noteText}
       </div>
       <div className='delete-note'>
-        <button className='delete-button'>X</button>
+        <button className='delete-button' onClick={onDelete}>X</button>
       </div>
       <div className='note-footer'>
         <div className='note-name'>
@@ -30,6 +38,15 @@ const Note = ({note: {noteText, creationDate, tasks}}) => {
   )
 }
 
-Note.propTypes = {}
+Note.propTypes = {
+  deleteNote: PropTypes.func.isRequired
+}
 
-export default Note
+const mapStateToProps = state => ({
+  notes: state.note
+})
+
+export default connect(
+  mapStateToProps,
+  {deleteNote})
+(Note)

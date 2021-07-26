@@ -22,6 +22,12 @@ export default (state = initialState, action) => {
         notes: action.payload,
         loading: false
       }
+    case DELETE_NOTE: {
+      return {
+        ...state,
+        notes: state.notes.filter(note => note.id !== action.payload)
+      }
+    }
     case NOTES_ERROR:
       console.log(action.payload)
       return {
