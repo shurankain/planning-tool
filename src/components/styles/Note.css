@@ -3,15 +3,44 @@
     height: 500px;
     display: flex;
     flex-direction: column;
-    border: none;
     background-color: white;
     border-radius: 10px;
-    box-shadow: cornflowerblue 6px 6px 10px;
+    border: 1px solid black;
+    box-shadow: lightgray 3px 3px 5px;
+    position: relative;
 }
 
 .task-text {
     height: 80%;
     margin: 20px;
+}
+
+.delete-note {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: -1px;
+    top: -1px;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+}
+
+.delete-note:hover {
+    opacity: 1;
+}
+
+
+.delete-button {
+    border: none;
+    background-color: #9ec862;
+    cursor: pointer;
+    margin: 0;
+    padding: 10px;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .note-name {
