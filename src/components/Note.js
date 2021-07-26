@@ -13,7 +13,7 @@ const Note = ({note: {noteText, creationDate, tasks}}) => {
         {noteText}
       </div>
       <div className='delete-note'>
-        <button className='delete-button' onClick={}>X</button>
+        <button className='delete-button'>X</button>
       </div>
       <div className='note-footer'>
         <div className='note-name'>
