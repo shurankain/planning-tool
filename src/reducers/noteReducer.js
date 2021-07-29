@@ -2,6 +2,7 @@ import {
   ADD_NOTE,
   GET_NOTE,
   GET_NOTES,
+  EDIT_NOTE_TEXT,
   DELETE_NOTE,
   NOTES_ERROR,
   SET_LOADING
@@ -22,6 +23,16 @@ export default (state = initialState, action) => {
         notes: action.payload,
         loading: false
       }
+    case EDIT_NOTE_TEXT : {
+      return {
+        ...state,
+        notes: state.notes.forEach(note => {
+          if(note.id === action.payload.id){
+            note.noteText = action.payload.noteText
+          }
+        })
+      }
+    }
     case DELETE_NOTE: {
       return {
         ...state,
