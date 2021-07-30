@@ -2,6 +2,7 @@ import {
   ADD_NOTE,
   GET_NOTE,
   GET_NOTES,
+  SET_CURRENT_NOTE,
   EDIT_NOTE_TEXT,
   DELETE_NOTE,
   NOTES_ERROR,
@@ -31,6 +32,12 @@ export default (state = initialState, action) => {
             note.noteText = action.payload.noteText
           }
         })
+      }
+    }
+    case SET_CURRENT_NOTE: {
+      return {
+        ...state,
+        current: action.payload
       }
     }
     case DELETE_NOTE: {

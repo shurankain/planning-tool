@@ -1,9 +1,4 @@
-import {
-  DELETE_NOTE, EDIT_NOTE_TEXT,
-  GET_NOTES,
-  NOTES_ERROR,
-  SET_LOADING
-} from "./types";
+import {DELETE_NOTE, EDIT_NOTE_TEXT, GET_NOTES, NOTES_ERROR, SET_CURRENT_NOTE, SET_LOADING} from "./types";
 
 // Get notes form sever
 export const getNotes = () => async (dispatch) => {
@@ -42,6 +37,13 @@ export const editNoteText = (noteId, text) => async (dispatch) => {
       type: NOTES_ERROR,
       payload: err
     })
+  }
+}
+
+export const setCurrent = note => {
+  return {
+    type: SET_CURRENT_NOTE,
+    payload: note
   }
 }
 
