@@ -1,26 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
-import {editNoteText} from "../../actions/noteActions";
+import {addNote} from "../../actions/noteActions";
 import '../../App.css';
 
-const EditNoteModal = ({current, editNoteText}) => {
+const AddNoteModal = ({addNoteTriggered, addNote}) => {
   const [noteText, setNoteText] = useState('')
-
-  useEffect(() => {
-    if (current) {
-      setNoteText(current.noteText)
-    }
-  }, [current])
+  const [tasks, setTasks] = useState(['test1', 'test2'])
 
   const onSubmit = () => {
-    editNoteText(current.id, noteText)
+    addNote(noteText, tasks)
     // Clear fields
     setNoteText('')
   }
 
+  useEffect(() => {
+  }, [addNoteTriggered])
+
   return (
-    <div className={`modal ${current ? '' : 'invisible'}`}>
+    <div className={`modal ${addNoteTriggered ? '' : 'invisible'}`}>
       <div className='modalContent'>
         <div className='inputField'>
           <input type='text'
@@ -39,17 +37,17 @@ const EditNoteModal = ({current, editNoteText}) => {
   );
 };
 
-EditNoteModal.propTypes = {
-  current: PropTypes.object,
-  editNoteText: PropTypes.func.isRequired
-};
+AddNoteModal.propTypes = {
+  addNoteTriggered: PropTypes.bool.isRequired,
+  addNote: PropTypes.func.isRequired
+}
 
 const mapStateToProps = state => ({
-  current: state.note.current
+  addNoteTriggered: state.note.addNoteTriggered
 })
 
 export default connect(
   mapStateToProps,
-  {editNoteText}
+  {addNote}
 )
-(EditNoteModal);
+(AddNoteModal);

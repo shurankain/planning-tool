@@ -13,7 +13,7 @@ const NotesGrid = ({notesList, getNotes}) => {
   useEffect(() => {
     getNotes()
     // eslint-disable-next-line
-  }, [notesList])
+  }, [])
 
   if (loading || notes === null) {
     return <Spinner/>
@@ -29,7 +29,7 @@ const NotesGrid = ({notesList, getNotes}) => {
 }
 
 NotesGrid.propTypes = {
-  notes: PropTypes.object.isRequired,
+  notes: PropTypes.object,
   getNotes: PropTypes.func.isRequired
 }
 

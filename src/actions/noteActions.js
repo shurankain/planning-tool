@@ -1,4 +1,13 @@
-import {DELETE_NOTE, EDIT_NOTE_TEXT, GET_NOTES, NOTES_ERROR, SET_CURRENT_NOTE, SET_LOADING} from "./types";
+import {
+  ADD_NOTE,
+  DELETE_NOTE,
+  EDIT_NOTE_TEXT,
+  GET_NOTES,
+  NOTES_ERROR,
+  SET_CURRENT_NOTE,
+  SET_LOADING,
+  TRIGGER_ADD_NOTE_MODAL
+} from "./types";
 
 // Get notes form sever
 export const getNotes = () => async (dispatch) => {
@@ -13,6 +22,36 @@ export const getNotes = () => async (dispatch) => {
 
     dispatch({
       type: GET_NOTES,
+      payload: data
+    })
+  } catch (err) {
+    console.log(err)
+    dispatch({
+      type: NOTES_ERROR,
+      payload: err
+    })
+  }
+}
+
+// Add Note
+export const addNote = (text, tasks) => async (dispatch) => {
+  try {
+    setLoading()
+
+    const requestObj = {
+      'noteText': text,
+      'tasks': tasks
+    }
+
+    const res = await fetch('http://localhost:8080/notes/add', {
+      method: 'POST',
+      headers: {'Authorization': 'Basic c2h1cmFua2FpbjoxMDAxU2h1cmFu', 'Content-Type': 'application/json'},
+      body: JSON.stringify(requestObj)
+    })
+    const data = await res.json()
+
+    dispatch({
+      type: ADD_NOTE,
       payload: data
     })
   } catch (err) {
@@ -84,5 +123,11 @@ export const deleteNote = noteId => async (dispatch) => {
 export const setLoading = () => {
   return {
     type: SET_LOADING
+  }
+}
+
+export const triggerAddNote = () => {
+  return{
+    type: TRIGGER_ADD_NOTE_MODAL
   }
 }

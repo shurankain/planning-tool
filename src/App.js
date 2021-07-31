@@ -4,6 +4,7 @@ import SideBar from './components/SideBar'
 import EditNoteModal from "./components/modals/EditNoteModal";
 import {Provider} from 'react-redux'
 import store from './store'
+import AddNoteModal from "./components/modals/AddNoteModal";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <NotesGrid/>
         <SideBar/>
         <EditNoteModal/>
+        <AddNoteModal/>
       </div>
     </Provider>
   );
