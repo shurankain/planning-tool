@@ -65,13 +65,19 @@ export const addNote = (text, tasks) => async (dispatch) => {
 }
 
 // Edit Note Text
-export const editNoteText = (noteId, text) => async (dispatch) => {
+export const editNoteText = (noteId, text, tasks) => async (dispatch) => {
   try {
     setLoading()
 
-    const res = await fetch('http://localhost:8080/notes/' + noteId + '?noteText=' + text, {
+    const requestObj = {
+      'noteText': text,
+      'tasks': tasks
+    }
+
+    const res = await fetch('http://localhost:8080/notes/' + noteId, {
       method: 'PUT',
-      headers: {'Authorization': 'Basic c2h1cmFua2FpbjoxMDAxU2h1cmFu'}
+      headers: {'Authorization': 'Basic c2h1cmFua2FpbjoxMDAxU2h1cmFu', 'Content-Type': 'application/json'},
+      body: JSON.stringify(requestObj)
     })
     const data = await res.json()
 

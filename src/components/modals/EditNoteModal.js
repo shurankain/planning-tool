@@ -6,15 +6,17 @@ import '../../App.css';
 
 const EditNoteModal = ({current, editNoteText, cancelModals}) => {
   const [noteText, setNoteText] = useState('')
+  const [tasks, setTasks] = useState([])
 
   useEffect(() => {
     if (current) {
       setNoteText(current.noteText)
+      setTasks(current.tasks)
     }
   }, [current])
 
   const onSubmit = () => {
-    editNoteText(current.id, noteText)
+    editNoteText(current.id, noteText, tasks)
     // Clear fields
     setNoteText('')
   }
