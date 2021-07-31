@@ -29,15 +29,13 @@ const Note = ({note, deleteNote, setCurrent}) => {
       </div>
       <div className='note-footer'>
         <div className='note-name'>
-          <p>{creationDate}</p>
+          <p>{`${creationDate[2]}-${creationDate[1]}-${creationDate[0]} ${creationDate[3]}:${creationDate[4]}`}</p>
         </div>
 
         <div className='info-box'>
           {(tasks !== null && tasks.length > 0) ? (<p>{calcTasksCompletion()}%</p>) : (<p>n/a</p>)}
-
         </div>
       </div>
-
     </div>
   )
 }
