@@ -12,7 +12,7 @@ const SideBar = ({triggerAddNote}) => {
 
   return (
     <div className="sidebar">
-      <button className="add" id="add" onClick={onAddClick}>
+      <button className="btn btn-green" id="add" onClick={onAddClick}>
         <i className="fas fa-plus"></i> Add note
       </button>
     </div>

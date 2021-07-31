@@ -1,5 +1,6 @@
 import {
   ADD_NOTE,
+  CANCEL_MODALS,
   DELETE_NOTE,
   EDIT_NOTE_TEXT,
   GET_NOTES,
@@ -119,6 +120,13 @@ export const deleteNote = noteId => async (dispatch) => {
   }
 }
 
+// Cancel all modals
+export const cancelModals = () => {
+  return {
+    type: CANCEL_MODALS
+  }
+}
+
 // Set loading to true
 export const setLoading = () => {
   return {
@@ -127,7 +135,7 @@ export const setLoading = () => {
 }
 
 export const triggerAddNote = () => {
-  return{
+  return {
     type: TRIGGER_ADD_NOTE_MODAL
   }
 }

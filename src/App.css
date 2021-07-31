@@ -25,11 +25,82 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 75vw;
+  width: 60vw;
   height: 75vh;
   background-color: white;
   border: 1px black solid;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputField {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalHeaderText {
+  width: 100%;
+  height: 10%;
+  font-size: 30px;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.modalTextInput {
+  width: 100%;
+  height: 90%;
+  padding: 20px;
+  border: 1px solid black;
+  resize: none;
+}
+
+.modalTextInput:focus {
+  outline: none;
+}
+
+.modalFooter {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn {
+  font-size: 30px;
+  color: #fff;
+  margin: 30px 0;
+  padding: .5rem 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-green {
+  background-color: #9ec862;
+}
+
+.btn-red {
+  background-color: lightcoral;
 }
 
 .invisible {

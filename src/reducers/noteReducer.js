@@ -1,4 +1,14 @@
-import {DELETE_NOTE, ADD_NOTE, TRIGGER_ADD_NOTE_MODAL, EDIT_NOTE_TEXT, GET_NOTES, NOTES_ERROR, SET_CURRENT_NOTE, SET_LOADING} from '../actions/types'
+import {
+  ADD_NOTE,
+  CANCEL_MODALS,
+  DELETE_NOTE,
+  EDIT_NOTE_TEXT,
+  GET_NOTES,
+  NOTES_ERROR,
+  SET_CURRENT_NOTE,
+  SET_LOADING,
+  TRIGGER_ADD_NOTE_MODAL
+} from '../actions/types'
 
 const initialState = {
   notes: null,
@@ -52,12 +62,20 @@ export default (state = initialState, action) => {
         loading: false
       }
     }
-    case NOTES_ERROR:
+    case NOTES_ERROR: {
       console.log(action.payload)
       return {
         ...state,
         error: action.payload
       }
+    }
+    case CANCEL_MODALS: {
+      return {
+        ...state,
+        current: null,
+        addNoteTriggered: false
+      }
+    }
     case SET_LOADING:
       return {
         ...state,

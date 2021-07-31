@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
-import {editNoteText} from "../../actions/noteActions";
+import {cancelModals, editNoteText} from "../../actions/noteActions";
 import '../../App.css';
 
-const EditNoteModal = ({current, editNoteText}) => {
+const EditNoteModal = ({current, editNoteText, cancelModals}) => {
   const [noteText, setNoteText] = useState('')
 
   useEffect(() => {
@@ -19,19 +19,30 @@ const EditNoteModal = ({current, editNoteText}) => {
     setNoteText('')
   }
 
+  const onCancel = () => {
+    cancelModals()
+    // Clear fields
+    setNoteText('')
+  }
+
   return (
     <div className={`modal ${current ? '' : 'invisible'}`}>
       <div className='modalContent'>
         <div className='inputField'>
-          <input type='text'
+          <p className='modalHeaderText'>Note text to edit:</p>
+          <textarea
                  name='message'
                  value={noteText}
+                 className='modalTextInput'
                  onChange={e => setNoteText(e.target.value)}/>
         </div>
       </div>
 
       <div className='modalFooter'>
-        <a href='#!' onClick={onSubmit} className='btn'>
+        <a href='#!' onClick={onCancel} className='btn btn-red'>
+          Cancel
+        </a>
+        <a href='#!' onClick={onSubmit} className='btn btn-green'>
           Save
         </a>
       </div>
@@ -41,7 +52,8 @@ const EditNoteModal = ({current, editNoteText}) => {
 
 EditNoteModal.propTypes = {
   current: PropTypes.object,
-  editNoteText: PropTypes.func.isRequired
+  editNoteText: PropTypes.func.isRequired,
+  cancelModals: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -50,6 +62,6 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  {editNoteText}
+  {editNoteText, cancelModals}
 )
 (EditNoteModal);
