@@ -31,7 +31,6 @@ const EditNoteModal = ({current, editNoteText, cancelModals}) => {
         <div className='inputField'>
           <p className='modalHeaderText'>Note text to edit:</p>
           <textarea
-                 name='message'
                  value={noteText}
                  className='modalTextInput'
                  onChange={e => setNoteText(e.target.value)}/>

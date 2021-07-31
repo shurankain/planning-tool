@@ -22,9 +22,8 @@ const Note = ({note, deleteNote, setCurrent}) => {
 
   return (
     <div className='note'>
-      <div className='task-text' onClick={onNoteClick}>
-        {noteText}
-      </div>
+      <textarea readOnly className='noteTextArea' value={noteText} onClick={onNoteClick}/>
+
       <div className='delete-note'>
         <button className='delete-button' onClick={onDelete}>X</button>
       </div>
