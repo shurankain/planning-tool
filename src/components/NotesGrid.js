@@ -6,12 +6,14 @@ import PropTypes from 'prop-types'
 import {getNotes} from "../actions/noteActions";
 import Spinner from "./layout/Spinner";
 
-const NotesGrid = ({notes: {notes, loading}, getNotes}) => {
+const NotesGrid = ({notesList, getNotes}) => {
+  
+  const {notes, loading} = notesList
 
   useEffect(() => {
     getNotes()
     // eslint-disable-next-line
-  }, [])
+  }, [notesList])
 
   if (loading || notes === null) {
     return <Spinner/>
@@ -32,7 +34,7 @@ NotesGrid.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  notes: state.note
+  notesList: state.note
 })
 
 export default connect(

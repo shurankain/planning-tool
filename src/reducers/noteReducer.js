@@ -27,11 +27,9 @@ export default (state = initialState, action) => {
     case EDIT_NOTE_TEXT : {
       return {
         ...state,
-        notes: state.notes.forEach(note => {
-          if(note.id === action.payload.id){
-            note.noteText = action.payload.noteText
-          }
-        })
+        notes: state.notes.map(note => note.id === action.payload.id ? action.payload : note),
+        current: null,
+        loading: false
       }
     }
     case SET_CURRENT_NOTE: {
@@ -43,7 +41,8 @@ export default (state = initialState, action) => {
     case DELETE_NOTE: {
       return {
         ...state,
-        notes: state.notes.filter(note => note.id !== action.payload)
+        notes: state.notes.filter(note => note.id !== action.payload),
+        loading: false
       }
     }
     case NOTES_ERROR:

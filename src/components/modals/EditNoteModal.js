@@ -2,14 +2,16 @@ import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
 import {editNoteText} from "../../actions/noteActions";
+import '../styles/EditNoteModal.css'
+import '../../App.css';
 
 const EditNoteModal = ({current, editNoteText}) => {
   const [noteText, setNoteText] = useState('')
 
   useEffect(() => {
     if (current) {
+      setNoteText(current.noteText)
     }
-    setNoteText(current.noteText)
   }, [current])
 
   const onSubmit = () => {
@@ -19,7 +21,7 @@ const EditNoteModal = ({current, editNoteText}) => {
   }
 
   return (
-    <div className="editNoteModal">
+    <div className={`editNoteModal ${current ? '':'invisible'}`}>
       <div className='modalContent'>
         <div className='inputField'>
           <input type='text'
@@ -30,7 +32,7 @@ const EditNoteModal = ({current, editNoteText}) => {
       </div>
 
       <div className='modalFooter'>
-        <a href='#!' onClick={onSubmit} className='modalSubmit btn'>
+        <a href='#!' onClick={onSubmit} className='btn'>
           Save
         </a>
       </div>

@@ -24,6 +24,8 @@ export const getNotes = () => async (dispatch) => {
 // Edit Note Text
 export const editNoteText = (noteId, text) => async (dispatch) => {
   try {
+    setLoading()
+
     const res = await fetch('http://localhost:8080/notes/' + noteId + '?noteText=' + text, {method:'PUT', headers: {'Authorization': 'Basic c2h1cmFua2FpbjoxMDAxU2h1cmFu'}})
     const data = await res.json()
 
@@ -48,10 +50,13 @@ export const setCurrent = note => {
 }
 
 
+
 // Delete note
 // Get notes form sever
 export const deleteNote = noteId => async (dispatch) => {
   try {
+    setLoading()
+
     await fetch('http://localhost:8080/notes/' + noteId, {method:'DELETE', headers: {'Authorization': 'Basic c2h1cmFua2FpbjoxMDAxU2h1cmFu'}})
 
     dispatch({

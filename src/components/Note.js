@@ -1,23 +1,28 @@
 import React from 'react'
 import './styles/Note.css'
-import {deleteNote} from "../actions/noteActions";
+import {deleteNote, setCurrent} from "../actions/noteActions";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-const Note = ({note: {id, noteText, creationDate, tasks}, deleteNote}) => {
+const Note = ({note, deleteNote, setCurrent}) => {
+
+  const {id, noteText, creationDate, tasks} = note
 
   const calcTasksCompletion = () => {
-    return Math.floor(tasks.filter(task => task.completionStatus).length / tasks.length)
+    return Math.floor(note.tasks.filter(task => task.completionStatus).length * 100 / note.tasks.length)
+  }
+
+  const onNoteClick = () => {
+    setCurrent(note)
   }
 
   const onDelete = () => {
-    console.log(id)
     deleteNote(id)
   }
 
   return (
     <div className='note'>
-      <div className='task-text'>
+      <div className='task-text' onClick={onNoteClick}>
         {noteText}
       </div>
       <div className='delete-note'>
@@ -39,7 +44,8 @@ const Note = ({note: {id, noteText, creationDate, tasks}, deleteNote}) => {
 }
 
 Note.propTypes = {
-  deleteNote: PropTypes.func.isRequired
+  deleteNote: PropTypes.func.isRequired,
+  setCurrent: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -48,5 +54,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  {deleteNote})
+  {deleteNote, setCurrent})
 (Note)
