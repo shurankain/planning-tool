@@ -33,7 +33,7 @@ const Note = ({note, deleteNote, setCurrent}) => {
         </div>
 
         <div className='info-box'>
-          {(tasks !== null) ? (<p>{calcTasksCompletion()}%</p>) : (<p>n/a</p>)}
+          {(tasks !== null && tasks.length > 0) ? (<p>{calcTasksCompletion()}%</p>) : (<p>n/a</p>)}
 
         </div>
       </div>
