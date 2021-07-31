@@ -7,7 +7,7 @@ import {getNotes} from "../actions/noteActions";
 import Spinner from "./layout/Spinner";
 
 const NotesGrid = ({notesList, getNotes}) => {
-  
+
   const {notes, loading} = notesList
 
   useEffect(() => {

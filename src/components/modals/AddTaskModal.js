@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const AddTaskModal = props => {
   return (
@@ -9,8 +8,6 @@ const AddTaskModal = props => {
   );
 };
 
-AddTaskModal.propTypes = {
-
-};
+AddTaskModal.propTypes = {};
 
 export default AddTaskModal;

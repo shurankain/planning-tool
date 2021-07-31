@@ -1,13 +1,4 @@
-import {
-  ADD_NOTE,
-  GET_NOTE,
-  GET_NOTES,
-  SET_CURRENT_NOTE,
-  EDIT_NOTE_TEXT,
-  DELETE_NOTE,
-  NOTES_ERROR,
-  SET_LOADING
-} from '../actions/types'
+import {DELETE_NOTE, EDIT_NOTE_TEXT, GET_NOTES, NOTES_ERROR, SET_CURRENT_NOTE, SET_LOADING} from '../actions/types'
 
 const initialState = {
   notes: null,
@@ -16,6 +7,7 @@ const initialState = {
   error: null
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_NOTES:

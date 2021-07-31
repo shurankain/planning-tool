@@ -21,7 +21,7 @@ const EditNoteModal = ({current, editNoteText}) => {
   }
 
   return (
-    <div className={`editNoteModal ${current ? '':'invisible'}`}>
+    <div className={`editNoteModal ${current ? '' : 'invisible'}`}>
       <div className='modalContent'>
         <div className='inputField'>
           <input type='text'

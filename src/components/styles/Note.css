@@ -1,70 +1,70 @@
 .note {
-    width: 500px;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid black;
-    box-shadow: lightgray 3px 3px 5px;
-    position: relative;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: lightgray 3px 3px 5px;
+  position: relative;
 }
 
 .task-text {
-    height: 80%;
-    margin: 20px;
+  height: 80%;
+  margin: 20px;
 }
 
 .delete-note {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    right: -1px;
-    top: -1px;
-    margin: 0;
-    opacity: 0;
-    transition: opacity 200ms ease-in-out;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: -1px;
+  top: -1px;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
 }
 
 .delete-note:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 
 .delete-button {
-    border: none;
-    background-color: #9ec862;
-    cursor: pointer;
-    margin: 0;
-    padding: 10px;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+  border: none;
+  background-color: #9ec862;
+  cursor: pointer;
+  margin: 0;
+  padding: 10px;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .note-name {
-    height: 100%;
-    width: 80%;
-    border-right: black 1px solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 100%;
+  width: 80%;
+  border-right: black 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .info-box {
-    height: 100%;
-    width: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 100%;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .note-footer {
-    height: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-top: black 1px solid;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: black 1px solid;
 }
 
