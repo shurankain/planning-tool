@@ -1,0 +1,32 @@
+.taskItem {
+  display: flex;
+  width: 90%;
+  align-items: center;
+  justify-content: space-around;
+  height: 12%;
+}
+
+.taskText {
+  width: 80%;
+  height: 30px;
+  margin: 0;
+  padding: 5px;
+  resize: none;
+  user-select: text;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.taskText:focus {
+  outline: none;
+}
+
+.task-button {
+  width: 5%;
+  margin: 0;
+  padding: 5px;
+}
+
+.task-button:disabled {
+  background-color: darkgray;
+}

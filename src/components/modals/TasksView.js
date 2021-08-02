@@ -24,7 +24,7 @@ const TasksView = ({current, tasksViewTriggered, editTask, cancelModals}) => {
 
   return (
     <div className={`modal ${tasksViewTriggered ? '' : 'invisible'}`}>
-      <div className='modalContent'>
+      <div className='taskModalContent'>
         <div className="tasks-grid">
           {tasks.length === 0 ? (<p className='center'>No tasks to show</p>) : (
             tasks.map(task => <Task task={task} key={task.id}/>)

@@ -60,7 +60,8 @@ export default (state = initialState, action) => {
         ...state,
         notes: state.notes.map(note => note.id === action.payload.id ? action.payload : note),
         current: null,
-        loading: false
+        loading: false,
+        editNoteTriggered: false
       }
     }
     case SET_CURRENT_NOTE: {
@@ -79,7 +80,10 @@ export default (state = initialState, action) => {
     case EDIT_TASK: {
       return {
         ...state,
-        notes: state.notes.map(note => note.tasks.map(task => task.id === action.payload.id ? action.payload : task))
+        notes: state.notes.map(note => {
+          note.tasks.map(task => task.id === action.payload.id ? action.payload : task)
+          return note
+        })
       }
     }
     case NOTES_ERROR: {
