@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {cancelModals, editNoteText} from "../../actions/noteActions";
 import '../../App.css';
 
-const EditNoteModal = ({current, editNoteText, cancelModals}) => {
+const EditNoteModal = ({current, editNoteTriggered, editNoteText, cancelModals}) => {
   const [noteText, setNoteText] = useState('')
   const [tasks, setTasks] = useState([])
 
@@ -28,10 +28,10 @@ const EditNoteModal = ({current, editNoteText, cancelModals}) => {
   }
 
   return (
-    <div className={`modal ${current ? '' : 'invisible'}`}>
+    <div className={`modal ${editNoteTriggered ? '' : 'invisible'}`}>
       <div className='modalContent'>
         <div className='inputField'>
-          <p className='modalHeaderText'>Note text to edit:</p>
+          <p className='modalHeaderText'>Edit note text:</p>
           <textarea
                  value={noteText}
                  className='modalTextInput'
@@ -53,12 +53,14 @@ const EditNoteModal = ({current, editNoteText, cancelModals}) => {
 
 EditNoteModal.propTypes = {
   current: PropTypes.object,
+  editNoteTriggered: PropTypes.bool.isRequired,
   editNoteText: PropTypes.func.isRequired,
   cancelModals: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  current: state.note.current
+  current: state.note.current,
+  editNoteTriggered: state.note.editNoteTriggered
 })
 
 export default connect(

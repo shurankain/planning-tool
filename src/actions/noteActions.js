@@ -7,7 +7,7 @@ import {
   NOTES_ERROR,
   SET_CURRENT_NOTE,
   SET_LOADING,
-  TRIGGER_ADD_NOTE_MODAL
+  TRIGGER_ADD_NOTE_MODAL, TRIGGER_EDIT_NOTE_MODAL, TRIGGER_TASK_VIEW_MODAL
 } from "./types";
 
 // Get notes form sever
@@ -140,8 +140,20 @@ export const setLoading = () => {
   }
 }
 
-export const triggerAddNote = () => {
+export const triggerAddNoteModal = () => {
   return {
     type: TRIGGER_ADD_NOTE_MODAL
+  }
+}
+
+export const triggerEditNoteModal = () => {
+  return {
+    type: TRIGGER_EDIT_NOTE_MODAL
+  }
+}
+
+export const triggerTaskViewModal = () => {
+  return {
+    type: TRIGGER_TASK_VIEW_MODAL
   }
 }

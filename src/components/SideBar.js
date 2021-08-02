@@ -2,12 +2,12 @@ import React from 'react'
 import "./styles/SideBar.css"
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {triggerAddNote} from "../actions/noteActions";
+import {triggerAddNoteModal} from "../actions/noteActions";
 
-const SideBar = ({triggerAddNote}) => {
+const SideBar = ({triggerAddNoteModal}) => {
 
   const onAddClick = () => {
-    triggerAddNote()
+    triggerAddNoteModal()
   }
 
   return (
@@ -20,10 +20,10 @@ const SideBar = ({triggerAddNote}) => {
 }
 
 SideBar.propTypes = {
-  triggerAddNote: PropTypes.func.isRequired
+  triggerAddNoteModal: PropTypes.func.isRequired
 }
 
 export default connect(
   null,
-  {triggerAddNote})
+  {triggerAddNoteModal})
 (SideBar)

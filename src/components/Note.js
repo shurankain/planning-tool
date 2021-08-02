@@ -1,10 +1,10 @@
 import React from 'react'
 import './styles/Note.css'
-import {deleteNote, setCurrent} from "../actions/noteActions";
+import {deleteNote, setCurrent, triggerEditNoteModal, triggerTaskViewModal} from "../actions/noteActions";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-const Note = ({note, deleteNote, setCurrent}) => {
+const Note = ({note, deleteNote, setCurrent, triggerEditNoteModal, triggerTaskViewModal}) => {
 
   const {id, noteText, creationDate, tasks} = note
 
@@ -14,6 +14,12 @@ const Note = ({note, deleteNote, setCurrent}) => {
 
   const onNoteClick = () => {
     setCurrent(note)
+    triggerEditNoteModal()
+  }
+
+  const onTaskClick = () => {
+    setCurrent(note)
+    triggerTaskViewModal()
   }
 
   const onDelete = () => {
@@ -32,7 +38,7 @@ const Note = ({note, deleteNote, setCurrent}) => {
           <p>{`${creationDate[2]}-${creationDate[1]}-${creationDate[0]} ${creationDate[3]}:${creationDate[4]}`}</p>
         </div>
 
-        <div className='info-box'>
+        <div className='info-box' onClick={onTaskClick}>
           {(tasks !== null && tasks.length > 0) ? (<p>{calcTasksCompletion()}%</p>) : (<p>n/a</p>)}
         </div>
       </div>
@@ -42,14 +48,12 @@ const Note = ({note, deleteNote, setCurrent}) => {
 
 Note.propTypes = {
   deleteNote: PropTypes.func.isRequired,
-  setCurrent: PropTypes.func.isRequired
+  setCurrent: PropTypes.func.isRequired,
+  triggerEditNoteModal: PropTypes.func.isRequired,
+  triggerTaskViewModal: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({
-  notes: state.note
-})
-
 export default connect(
-  mapStateToProps,
-  {deleteNote, setCurrent})
+  null,
+  {deleteNote, setCurrent, triggerEditNoteModal, triggerTaskViewModal})
 (Note)

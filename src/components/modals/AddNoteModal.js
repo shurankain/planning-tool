@@ -27,7 +27,7 @@ const AddNoteModal = ({addNoteTriggered, addNote, cancelModals}) => {
     <div className={`modal ${addNoteTriggered ? '' : 'invisible'}`}>
       <div className='modalContent'>
         <div className='inputField'>
-          <p className='modalHeaderText'>Note text:</p>
+          <p className='modalHeaderText'>Add note text:</p>
           <textarea
                  value={noteText}
                  className='modalTextInput'

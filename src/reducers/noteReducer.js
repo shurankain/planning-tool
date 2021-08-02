@@ -2,18 +2,20 @@ import {
   ADD_NOTE,
   CANCEL_MODALS,
   DELETE_NOTE,
-  EDIT_NOTE_TEXT,
+  EDIT_NOTE_TEXT, EDIT_TASK,
   GET_NOTES,
   NOTES_ERROR,
   SET_CURRENT_NOTE,
-  SET_LOADING,
-  TRIGGER_ADD_NOTE_MODAL
+  SET_LOADING, TASKS_ERROR,
+  TRIGGER_ADD_NOTE_MODAL, TRIGGER_EDIT_NOTE_MODAL, TRIGGER_TASK_VIEW_MODAL
 } from '../actions/types'
 
 const initialState = {
   notes: null,
   current: null,
   addNoteTriggered: false,
+  editNoteTriggered: false,
+  tasksViewTriggered: false,
   loading: false,
   error: null
 }
@@ -41,6 +43,18 @@ export default (state = initialState, action) => {
         addNoteTriggered: true
       }
     }
+    case TRIGGER_EDIT_NOTE_MODAL: {
+      return {
+        ...state,
+        editNoteTriggered: true
+      }
+    }
+    case TRIGGER_TASK_VIEW_MODAL: {
+      return {
+        ...state,
+        tasksViewTriggered: true
+      }
+    }
     case EDIT_NOTE_TEXT : {
       return {
         ...state,
@@ -62,7 +76,20 @@ export default (state = initialState, action) => {
         loading: false
       }
     }
+    case EDIT_TASK: {
+      return {
+        ...state,
+        notes: state.notes.map(note => note.tasks.map(task => task.id === action.payload.id ? action.payload : task))
+      }
+    }
     case NOTES_ERROR: {
+      console.log(action.payload)
+      return {
+        ...state,
+        error: action.payload
+      }
+    }
+    case TASKS_ERROR: {
       console.log(action.payload)
       return {
         ...state,
@@ -73,7 +100,9 @@ export default (state = initialState, action) => {
       return {
         ...state,
         current: null,
-        addNoteTriggered: false
+        addNoteTriggered: false,
+        editNoteTriggered: false,
+        tasksViewTriggered: false
       }
     }
     case SET_LOADING:

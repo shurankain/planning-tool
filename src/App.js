@@ -5,6 +5,7 @@ import EditNoteModal from "./components/modals/EditNoteModal";
 import {Provider} from 'react-redux'
 import store from './store'
 import AddNoteModal from "./components/modals/AddNoteModal";
+import TasksView from "./components/modals/TasksView";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <SideBar/>
         <EditNoteModal/>
         <AddNoteModal/>
+        <TasksView/>
       </div>
     </Provider>
   );

@@ -93,6 +93,7 @@ body {
   border-radius: 10px;
   cursor: pointer;
   text-decoration: none;
+  user-select: none;
 }
 
 .btn-green {
