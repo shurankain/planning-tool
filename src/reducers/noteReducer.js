@@ -1,5 +1,5 @@
 import {
-  ADD_NOTE,
+  ADD_NOTE, ADD_TASK_TO_NOTE,
   CANCEL_MODALS,
   DELETE_NOTE,
   EDIT_NOTE_TEXT, EDIT_TASK,
@@ -62,6 +62,13 @@ export default (state = initialState, action) => {
         current: null,
         loading: false,
         editNoteTriggered: false
+      }
+    }
+    case ADD_TASK_TO_NOTE: {
+      return {
+        ...state,
+        notes: state.notes.map(note => note.id === action.payload.id ? action.payload : note),
+        current: action.payload
       }
     }
     case SET_CURRENT_NOTE: {

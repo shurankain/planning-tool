@@ -14,6 +14,7 @@ export const ADD_TASK = 'ADD_TASK'
 export const EDIT_TASK = 'EDIT_TASK'
 export const DELETE_NOTE_TASK = 'DELETE_NOTE_TASK'
 export const TRIGGER_TASK_VIEW_MODAL = 'TRIGGER_TASK_VIEW_MODAL'
+export const ADD_TASK_TO_NOTE = 'ADD_TASK_TO_NOTE'
 export const TASKS_ERROR = 'TASKS_ERROR'
 // util
 export const SET_LOADING = 'SET_LOADING'
