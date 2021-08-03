@@ -94,7 +94,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         notes: state.notes.map(note => {
-          note.tasks.map(task => task.id === action.payload.id ? action.payload : task)
+          note.tasks = note.tasks.map(task => task.id === action.payload.id ? action.payload : task)
           return note
         }),
         current: state.notes.filter(note => note.id === state.current.id)[0]

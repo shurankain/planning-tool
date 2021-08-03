@@ -6,9 +6,10 @@ import '../components/styles/Task.css'
 
 const Task = ({task, current, editTask, deleteTask}) => {
   const [wasEdited, setWasEdited] = useState(false)
-  const [taskText, setTaskText] = useState(task.taskInfo)
+  const [taskText, setTaskText] = useState('')
 
   const clickSave = () => {
+    setWasEdited(false)
     editTask(task.id, taskText, task.creationDate, task.completionStatus)
   }
 
@@ -17,8 +18,7 @@ const Task = ({task, current, editTask, deleteTask}) => {
   }
 
   useEffect(() => {
-    setWasEdited(false)
-    setTaskText(task.taskInfo)
+    console.log(taskText)
     // eslint-disable-next-line
   }, [current])
 
@@ -27,7 +27,8 @@ const Task = ({task, current, editTask, deleteTask}) => {
       <textarea className='taskText'
                 defaultValue={task.taskInfo}
                 onChange={e => {
-                  setTaskText(e.target.value);
+                  setTaskText(e.target.value)
+                  console.log(e.target.value + ' ' + task.taskInfo)
                   setWasEdited(e.target.value !== task.taskInfo)
                 }}/>
       <button className="btn task-button btn-green" disabled={!wasEdited} onClick={clickSave}>
