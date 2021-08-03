@@ -7,10 +7,16 @@ import '../components/styles/Task.css'
 const Task = ({task, current, editTask, deleteTask}) => {
   const [wasEdited, setWasEdited] = useState(false)
   const [taskText, setTaskText] = useState('')
+  const [isCompleted, setIsCompleted] = useState(task.completionStatus)
 
   const clickSave = () => {
+    editTask(task.id, taskText, task.creationDate, isCompleted)
     setWasEdited(false)
-    editTask(task.id, taskText, task.creationDate, task.completionStatus)
+  }
+
+  const onCheckboxClicked = () => {
+    setIsCompleted(!isCompleted)
+    setWasEdited(true)
   }
 
   const clickDelete = () => {
@@ -18,7 +24,6 @@ const Task = ({task, current, editTask, deleteTask}) => {
   }
 
   useEffect(() => {
-    console.log(taskText)
     // eslint-disable-next-line
   }, [current])
 
@@ -28,9 +33,9 @@ const Task = ({task, current, editTask, deleteTask}) => {
                 defaultValue={task.taskInfo}
                 onChange={e => {
                   setTaskText(e.target.value)
-                  console.log(e.target.value + ' ' + task.taskInfo)
                   setWasEdited(e.target.value !== task.taskInfo)
                 }}/>
+      <input className='completion-checkbox' type='checkbox' defaultValue={task.completionStatus} onClick={onCheckboxClicked}/>
       <button className="btn task-button btn-green" disabled={!wasEdited} onClick={clickSave}>
         <i className="far fa-save"></i>
       </button>
