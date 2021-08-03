@@ -3,7 +3,7 @@
   width: 90%;
   align-items: center;
   justify-content: space-around;
-  height: 12%;
+  min-height: 12%;
 }
 
 .taskText {

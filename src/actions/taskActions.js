@@ -1,4 +1,5 @@
-import {TASKS_ERROR, EDIT_TASK, ADD_TASK_TO_NOTE} from "./types";
+import {ADD_TASK_TO_NOTE, DELETE_TASK, EDIT_TASK, TASKS_ERROR} from "./types";
+import {setLoading} from "./noteActions";
 
 
 export const editTask = (id, text, creationDate, status) => async (dispatch) => {
@@ -25,14 +26,14 @@ export const editTask = (id, text, creationDate, status) => async (dispatch) => 
 
   } catch (err) {
     console.log(err)
-    dispatch ({
+    dispatch({
       type: TASKS_ERROR,
       payload: err
     })
   }
 }
 
-export const addTaskToNote = (noteId, text, status) => async  (dispatch) => {
+export const addTaskToNote = (noteId, text, status) => async (dispatch) => {
 
   try {
     const taskToAdd = {
@@ -56,10 +57,31 @@ export const addTaskToNote = (noteId, text, status) => async  (dispatch) => {
 
   } catch (err) {
     console.log(err)
-    dispatch ({
+    dispatch({
       type: TASKS_ERROR,
       payload: err
     })
   }
+}
 
+export const deleteTask = taskId => async (dispatch) => {
+  try {
+    setLoading()
+
+    await fetch('http://localhost:8080/tasks/' + taskId, {
+      method: 'DELETE',
+      headers: {'Authorization': 'Basic c2h1cmFua2FpbjoxMDAxU2h1cmFu'}
+    })
+
+    dispatch({
+      type: DELETE_TASK,
+      payload: taskId
+    })
+  } catch (err) {
+    console.log(err)
+    dispatch({
+      type: TASKS_ERROR,
+      payload: err
+    })
+  }
 }

@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './styles/Note.css'
 import {deleteNote, setCurrent, triggerEditNoteModal, triggerTaskViewModal} from "../actions/noteActions";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-const Note = ({note, deleteNote, setCurrent, triggerEditNoteModal, triggerTaskViewModal}) => {
+const Note = ({note, current, deleteNote, setCurrent, triggerEditNoteModal, triggerTaskViewModal}) => {
 
   const {id, noteText, creationDate, tasks} = note
 
@@ -25,6 +25,10 @@ const Note = ({note, deleteNote, setCurrent, triggerEditNoteModal, triggerTaskVi
   const onDelete = () => {
     deleteNote(id)
   }
+
+  useEffect(() => {
+    // needed to update task completeness status
+  }, [current])
 
   return (
     <div className='note'>
@@ -49,11 +53,16 @@ const Note = ({note, deleteNote, setCurrent, triggerEditNoteModal, triggerTaskVi
 Note.propTypes = {
   deleteNote: PropTypes.func.isRequired,
   setCurrent: PropTypes.func.isRequired,
+  current: PropTypes.object,
   triggerEditNoteModal: PropTypes.func.isRequired,
   triggerTaskViewModal: PropTypes.func.isRequired
 }
 
+const mapStateToProps = state => ({
+  current: state.note.current
+})
+
 export default connect(
-  null,
+  mapStateToProps,
   {deleteNote, setCurrent, triggerEditNoteModal, triggerTaskViewModal})
 (Note)

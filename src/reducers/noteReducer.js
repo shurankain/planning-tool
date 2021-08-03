@@ -1,13 +1,19 @@
 import {
-  ADD_NOTE, ADD_TASK_TO_NOTE,
+  ADD_NOTE,
+  ADD_TASK_TO_NOTE,
   CANCEL_MODALS,
   DELETE_NOTE,
-  EDIT_NOTE_TEXT, EDIT_TASK,
+  DELETE_TASK,
+  EDIT_NOTE_TEXT,
+  EDIT_TASK,
   GET_NOTES,
   NOTES_ERROR,
   SET_CURRENT_NOTE,
-  SET_LOADING, TASKS_ERROR,
-  TRIGGER_ADD_NOTE_MODAL, TRIGGER_EDIT_NOTE_MODAL, TRIGGER_TASK_VIEW_MODAL
+  SET_LOADING,
+  TASKS_ERROR,
+  TRIGGER_ADD_NOTE_MODAL,
+  TRIGGER_EDIT_NOTE_MODAL,
+  TRIGGER_TASK_VIEW_MODAL
 } from '../actions/types'
 
 const initialState = {
@@ -90,7 +96,19 @@ export default (state = initialState, action) => {
         notes: state.notes.map(note => {
           note.tasks.map(task => task.id === action.payload.id ? action.payload : task)
           return note
-        })
+        }),
+        current: state.notes.filter(note => note.id === state.current.id)[0]
+      }
+    }
+    case DELETE_TASK: {
+      return {
+        ...state,
+        notes: state.notes.map(note => {
+          note.tasks = note.tasks.filter(task => task.id !== action.payload)
+          return note
+        }),
+        current: state.notes.filter(note => note.id === state.current.id)[0],
+        loading: false
       }
     }
     case NOTES_ERROR: {

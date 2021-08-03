@@ -6,10 +6,9 @@ import '../../App.css';
 
 const AddNoteModal = ({addNoteTriggered, addNote, cancelModals}) => {
   const [noteText, setNoteText] = useState('')
-  const [tasks, setTasks] = useState(['test1', 'test2'])
 
   const onSubmit = () => {
-    addNote(noteText, tasks)
+    addNote(noteText, [])
     // Clear fields
     setNoteText('')
   }

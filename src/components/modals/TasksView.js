@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {cancelModals} from "../../actions/noteActions";
-import {addTaskToNote, editTask} from "../../actions/taskActions";
+import {addTaskToNote} from "../../actions/taskActions";
 import Task from "../Task";
 
-const TasksView = ({current, tasksViewTriggered, editTask, cancelModals, addTaskToNote}) => {
+const TasksView = ({current, notes, tasksViewTriggered, cancelModals, addTaskToNote}) => {
   const [tasks, setTasks] = useState([])
 
   const onAddTask = () => {
@@ -20,10 +20,10 @@ const TasksView = ({current, tasksViewTriggered, editTask, cancelModals, addTask
     if (current) {
       setTasks(current.tasks)
     }
-  }, [current, tasksViewTriggered])
+  }, [current, notes])
 
   return (
-    <div className={`modal ${tasksViewTriggered ? '' : 'invisible'}`}>
+    <div className={`tasks-modal ${tasksViewTriggered ? '' : 'invisible'}`}>
       <div className='taskModalContent'>
         <div className="tasks-grid">
           {tasks.length === 0 ? (<p className='center'>No tasks to show</p>) : (
@@ -36,9 +36,7 @@ const TasksView = ({current, tasksViewTriggered, editTask, cancelModals, addTask
         <a href='#!' onClick={onCancel} className='btn btn-red'>
           Close
         </a>
-      </div>
-      <div className='modalFooter'>
-        <a href='#!' onClick={onAddTask} className='btn btn-red'>
+        <a href='#!' onClick={onAddTask} className='btn btn-green'>
           Add Task
         </a>
       </div>
@@ -49,18 +47,18 @@ const TasksView = ({current, tasksViewTriggered, editTask, cancelModals, addTask
 TasksView.propTypes = {
   current: PropTypes.object,
   tasksViewTriggered: PropTypes.bool.isRequired,
-  editTask: PropTypes.func.isRequired,
   cancelModals: PropTypes.func.isRequired,
   addTaskToNote: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   current: state.note.current,
-  tasksViewTriggered: state.note.tasksViewTriggered
+  tasksViewTriggered: state.note.tasksViewTriggered,
+  notes: state.note.notes
 })
 
 export default connect(
   mapStateToProps,
-  {editTask, cancelModals, addTaskToNote}
+  {cancelModals, addTaskToNote}
 )
 (TasksView);

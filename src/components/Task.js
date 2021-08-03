@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {editTask} from "../actions/taskActions";
+import {deleteTask, editTask} from "../actions/taskActions";
 import '../components/styles/Task.css'
 
-const Task = ({task, tasksViewTriggered, editTask}) => {
+const Task = ({task, current, editTask, deleteTask}) => {
   const [wasEdited, setWasEdited] = useState(false)
   const [taskText, setTaskText] = useState(task.taskInfo)
 
@@ -13,14 +13,14 @@ const Task = ({task, tasksViewTriggered, editTask}) => {
   }
 
   const clickDelete = () => {
-
+    deleteTask(task.id)
   }
 
   useEffect(() => {
     setWasEdited(false)
     setTaskText(task.taskInfo)
     // eslint-disable-next-line
-  }, [tasksViewTriggered])
+  }, [current])
 
   return (
     <div className='taskItem'>
@@ -42,15 +42,15 @@ const Task = ({task, tasksViewTriggered, editTask}) => {
 
 Task.propTypes = {
   task: PropTypes.object.isRequired,
-  tasksViewTriggered: PropTypes.bool.isRequired,
-  editTask: PropTypes.func.isRequired
+  editTask: PropTypes.func.isRequired,
+  current: PropTypes.object,
 }
 
 const mapStateToProps = state => ({
-  tasksViewTriggered: state.note.tasksViewTriggered
+  current: state.note.current
 })
 
 export default connect(
   mapStateToProps,
-  {editTask})
+  {editTask, deleteTask})
 (Task)

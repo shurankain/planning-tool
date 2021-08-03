@@ -21,6 +21,7 @@ export const getNotes = () => async (dispatch) => {
     })
     const data = await res.json()
 
+    console.log(data)
     dispatch({
       type: GET_NOTES,
       payload: data
