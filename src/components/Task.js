@@ -35,7 +35,8 @@ const Task = ({task, current, editTask, deleteTask}) => {
                   setTaskText(e.target.value)
                   setWasEdited(e.target.value !== task.taskInfo)
                 }}/>
-      <input className='completion-checkbox' type='checkbox' defaultValue={task.completionStatus} onClick={onCheckboxClicked}/>
+      <input className='completion-checkbox' type='checkbox' defaultValue={task.completionStatus}
+             onClick={onCheckboxClicked}/>
       <button className="btn task-button btn-green" disabled={!wasEdited} onClick={clickSave}>
         <i className="far fa-save"></i>
       </button>
