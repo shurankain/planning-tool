@@ -27,8 +27,7 @@
   position: absolute;
   width: 30px;
   height: 30px;
-  right: -1px;
-  top: -1px;
+  right: -2px;
   margin: 0;
   opacity: 0;
   transition: opacity 200ms ease-in-out;
