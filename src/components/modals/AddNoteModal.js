@@ -35,10 +35,10 @@ const AddNoteModal = ({addNoteTriggered, addNote, cancelModals}) => {
       </div>
 
       <div className='modalFooter'>
-        <a href='#!' onClick={onCancel} className='btn btn-red'>
+        <a href={'#!'} onClick={onCancel} className='btn btn-red'>
           Cancel
         </a>
-        <a href='#!' onClick={onSubmit} className='btn btn-green'>
+        <a href={'#!'} onClick={onSubmit} className='btn btn-green'>
           Save
         </a>
       </div>
